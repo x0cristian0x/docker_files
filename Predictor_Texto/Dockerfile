@@ -15,18 +15,15 @@ RUN apt-get update && apt-get install -y \
     libssl1.1 \
     && rm -rf /var/lib/apt/lists/*
 
+# basic shiny functionality
+RUN R -e "install.packages( c('shiny','remotes' ,'markdown', 'stringr', 'NLP', 'dplyr', 'ggplot2', 'shinydashboard', 'plotly'), repos='https://cloud.r-project.org/')"
+
+RUN R -e "remotes::install_github('trinker/qdap')"
+
 # copy the app to the image
 RUN mkdir /root/predecir_texto
+
 COPY . /root/predecir_texto
-
-# install a cran
-RUN R -e "install.packages('/root/predecir_texto/qdap.zip', repos = NULL)"
-
-# basic shiny functionality
-RUN R -e "install.packages( c('shiny', 'markdown', 'stringr', 'NLP', 'dplyr', 'ggplot2', 'shinydashboard', 'plotly'), repos='https://cloud.r-project.org/')"
-
-
-
 
 COPY Rprofile.site /usr/lib/R/etc/
 
