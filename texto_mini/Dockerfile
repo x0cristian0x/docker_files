@@ -12,7 +12,9 @@ RUN echo "America/Edmonton" > /etc/timezone
 RUN installr -d \
     -t "R-dev file linux-headers libxml2-dev gnutls-dev openssl-dev libx11-dev cairo-dev libxt-dev" \
     -a "libxml2 cairo libx11 font-xfree86-type1" \
-    remotes shiny forecast jsonlite ggplot2 htmltools plotly Cairo
+    remotes shiny forecast jsonlite ggplot2 htmltools plotly Cairo remotes markdown stringr NLP dplyr shinydashboard
+
+RUN R -e "remotes::install_github('trinker/qdap', dependencies = FALSE)"
 
 RUN rm -rf /var/cache/apk/*
 

@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 # basic shiny functionality
 RUN R -e "install.packages( c('shiny','remotes' ,'markdown', 'stringr', 'NLP', 'dplyr', 'ggplot2', 'shinydashboard', 'plotly'), repos='https://cloud.r-project.org/')"
 
-RUN R -e "remotes::install_github('trinker/qdap')"
+RUN R -e "remotes::install_github('trinker/qdap', dependencies = FALSE)"
 
 # copy the app to the image
 RUN mkdir /root/predecir_texto
