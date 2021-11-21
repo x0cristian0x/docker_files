@@ -1,6 +1,6 @@
 FROM openanalytics/r-base
 
-MAINTAINER Cristian Heredia "cristianvoice@gmail.com"
+LABEL maintainer = "Cristian Heredia cristianvoice@gmail.com"
 
 # system libraries of general use
 RUN apt-get update && apt-get install -y \
